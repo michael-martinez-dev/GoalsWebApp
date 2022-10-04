@@ -44,14 +44,13 @@ pipeline {
         stage('Build images') {
           steps {
             echo 'Building docker images & pushing them to repo...'
-            sh 'make image'
+            // sh 'make image'
           }
         }
 
         stage('Build resources') {
           steps {
             echo 'Building Databases & Storage resources...'
-            sh 'make db'
           }
         }
 
@@ -79,7 +78,7 @@ pipeline {
     stage('Docker Hub push') {
       steps {
         echo 'Pushing to Dockerhub...'
-        sh 'make image-push'
+        // sh 'make image-push'
       }
     }
 
