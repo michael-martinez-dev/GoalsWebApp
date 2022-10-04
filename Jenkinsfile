@@ -93,6 +93,7 @@ pipeline {
   post {
       always {
           sh 'make clean'
+          sh 'rm -rf .env node_modules'
       }
       success {
           echo 'The Pipeline was successful! 🎉'
