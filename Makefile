@@ -5,17 +5,20 @@ APP_BIN = server
 DOCKERHUB_USER=mixedmachine
 
 
-.PHONY: db dev pipeline test dockerfile image image-push image-run compose 
+.PHONY: local-run dev pipeline test dockerfile image image-push image-run compose 
 
 
 build: 
+	echo "Installing dependencies and building $(APP_NAME) $(APP_VERSION)..."
+	npm install
+	npm run build
 
+local-run: build
+	echo "Running $(APP_NAME) $(APP_VERSION)..."
+	serve -s build
 
-db:
-	docker compose -f ./build/docker-compose.db.yml up -d
-
-dev: db build 
-	echo "Running dev server"
+dev:
+	echo "Running dev server..."
 	npm start
 
 pipeline:
@@ -27,7 +30,7 @@ test:
 	npm test
 
 dockerfile:
-	npm build
+	npm run build
 
 image:
 	docker build -f ./build/Dockerfile -t $(APP_NAME):latest .
@@ -50,11 +53,9 @@ image-run: image
 	$(APP_NAME):latest
 
 compose: image
-	docker compose -f ./build/docker-compose.db.yml up --build -d
 	docker compose -f ./build/docker-compose.app.yml up --build -d
 
 clean:
 	rm -f ./bin/$(APP_BIN)
 	docker rm -f $(APP_NAME)
-	docker compose -f ./build/docker-compose.db.yml down
 	docker compose -f ./build/docker-compose.app.yml down
