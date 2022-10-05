@@ -12,7 +12,7 @@ const Home = () => {
                     // you can use your own router's api to get pathname
                     activeItemId="/management/members"
                     onSelect={({itemId}) => {
-                        setPage(itemId.split('/'));
+                        setPage(itemId.split('/').reverse().join(' ').toUpperCase());
                     }}
                     items={[
                     {
@@ -38,20 +38,6 @@ const Home = () => {
                         ],
                     },
                     {
-                        title: 'Routines',
-                        itemId: '/routines',
-                        subNav: [
-                        {
-                            title: 'View',
-                            itemId: '/routines/view',
-                        },
-                        {
-                            title: 'New',
-                            itemId: '/routines/new',
-                        },
-                        ],
-                    },
-                    {
                         title: 'Settings',
                         itemId: '/settings',
                         subNav: [
@@ -65,7 +51,7 @@ const Home = () => {
                 />
             </div>
             <div className="content">
-                <h1>{page.reverse().join(' ').toUpperCase()}</h1>
+                <h1>{page}</h1>
             </div>
         </>
     );
