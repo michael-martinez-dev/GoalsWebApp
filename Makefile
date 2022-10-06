@@ -58,4 +58,4 @@ compose: image
 clean:
 	rm -fr ./build
 	docker rm -f $(APP_NAME)
-	# docker compose -f ./builder/docker-compose.app.yml down
+	docker compose -f ./builder/docker-compose.app.yml down
