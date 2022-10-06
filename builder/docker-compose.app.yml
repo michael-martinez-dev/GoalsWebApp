@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  goals-web-app:
+    image: goals-web-app:latest
+    build: .
+    ports:
+      - "80:80"
+    env_file:
+      - ../.env
+

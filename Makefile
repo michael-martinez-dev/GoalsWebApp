@@ -33,8 +33,8 @@ dockerfile:
 	npm run build
 
 image:
-	docker build -f ./build/Dockerfile -t $(APP_NAME):latest .
-	docker build -f ./build/Dockerfile -t $(APP_NAME):$(APP_VERSION) .
+	docker build -f ./builder/Dockerfile -t $(APP_NAME):latest .
+	docker build -f ./builder/Dockerfile -t $(APP_NAME):$(APP_VERSION) .
 
 image-push:
 	docker tag $(APP_NAME):latest $(DOCKERHUB_USER)/$(APP_NAME):latest
@@ -47,15 +47,15 @@ image-push:
 # to a reachable host. Instead use compose.
 image-run: image
 	docker run -d \
-	-p 8080:8080 \
+	-p 80:80 \
 	--env-file .env \
 	--name $(APP_NAME) \
 	$(APP_NAME):latest
 
 compose: image
-	docker compose -f ./build/docker-compose.app.yml up --build -d
+	docker compose -f ./builder/docker-compose.app.yml up -d
 
 clean:
-	rm -f ./bin/$(APP_BIN)
+	rm -fr ./build
 	docker rm -f $(APP_NAME)
-	docker compose -f ./build/docker-compose.app.yml down
+	# docker compose -f ./builder/docker-compose.app.yml down
