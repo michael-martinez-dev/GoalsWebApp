@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  goals-web-app:
+    image: goals-web-app:v1
+    build: .
+    ports:
+      - "80:80"
+    env_file:
+      - ../prod.env
+    networks:
+      - web-net
+
+networks:
+  web-net:
+    name: web-net
