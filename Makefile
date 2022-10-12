@@ -5,7 +5,7 @@ APP_BIN = server
 DOCKERHUB_USER=mixedmachine
 
 
-.PHONY: local-run dev pipeline test dockerfile image image-push image-run compose 
+.PHONY: local-run dev pipeline test dockerfile image image-push image-run compose prod
 
 
 build: 
@@ -54,6 +54,9 @@ image-run: image
 
 compose: image
 	docker compose -f ./builder/docker-compose.app.yml up -d
+
+prod:
+	docker compose -f ./builder/docker-compose.prod.yml up -d
 
 clean:
 	rm -fr ./build
