@@ -19,9 +19,10 @@ const SignUp = () => {
         const { firstName, lastName, email, password } = e.target.elements;
         try {
             if (firstName !== "" && lastName !== "" && emailRegex.test(email.value) && passwordRegex.test(password.value)) {
-                console.log(email.value);
-                console.log(password.value);
-                fetch(`${process.env.REACT_APP_USER_AUTH_BASE_URL}${process.env.REACT_APP_USER_AUTH_API_BASE_ENDPOINT}/signup"`, {
+                console.debug(email.value);
+                console.debug(password.value);
+                console.log(`${process.env.REACT_APP_USER_AUTH_BASE_URL}${process.env.REACT_APP_USER_AUTH_API_BASE_ENDPOINT}/signup`)
+                fetch(`${process.env.REACT_APP_USER_AUTH_BASE_URL}${process.env.REACT_APP_USER_AUTH_API_BASE_ENDPOINT}/signup`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -30,7 +31,7 @@ const SignUp = () => {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    console.debug(data);
                     setResult("Success!");
                     e.target.elements.firstName.value = "";
                     e.target.elements.lastName.value = "";
@@ -38,7 +39,7 @@ const SignUp = () => {
                     e.target.elements.password.value = "";
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.debug(err);
                     setResult("Error signing up");
                 });
             } else {
