@@ -44,7 +44,7 @@ pipeline {
         stage('Build images') {
           steps {
             echo 'Building docker images & pushing them to repo...'
-            // sh 'make image'
+            sh 'make image'
           }
         }
 
@@ -78,7 +78,7 @@ pipeline {
     stage('Docker Hub push') {
       steps {
         echo 'Pushing to Dockerhub...'
-        // sh 'make image-push'
+        sh 'make image-push'
       }
     }
 
@@ -91,7 +91,7 @@ pipeline {
   }
   post {
       always {
-          // sh 'make clean'
+          sh 'make clean'
           sh 'rm -rf .env node_modules'
       }
       success {
