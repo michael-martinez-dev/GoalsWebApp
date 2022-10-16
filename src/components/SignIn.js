@@ -19,9 +19,6 @@ const SignIn = ({setToken}) => {
         const { email, password } = e.target.elements;
         try {
             if (emailRegex.test(email.value) && passwordRegex.test(password.value)) {
-                console.debug(email.value);
-                console.debug(password.value);
-                console.log(`${process.env.REACT_APP_USER_AUTH_BASE_URL}${process.env.REACT_APP_USER_AUTH_API_BASE_ENDPOINT}/signin`)
                 fetch(`https://auth.mixedmachine.ml/api/v1/signin`, {
                     method: "POST",
                     headers: {
