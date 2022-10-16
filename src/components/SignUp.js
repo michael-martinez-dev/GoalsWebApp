@@ -22,7 +22,7 @@ const SignUp = () => {
                 console.debug(email.value);
                 console.debug(password.value);
                 console.log(`${process.env.REACT_APP_USER_AUTH_BASE_URL}${process.env.REACT_APP_USER_AUTH_API_BASE_ENDPOINT}/signup`)
-                fetch(`${process.env.REACT_APP_USER_AUTH_BASE_URL}${process.env.REACT_APP_USER_AUTH_API_BASE_ENDPOINT}/signup`, {
+                fetch(`api/v1/signup`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
