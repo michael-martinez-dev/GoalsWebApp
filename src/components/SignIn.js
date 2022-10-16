@@ -22,7 +22,7 @@ const SignIn = ({setToken}) => {
                 console.debug(email.value);
                 console.debug(password.value);
                 console.log(`${process.env.REACT_APP_USER_AUTH_BASE_URL}${process.env.REACT_APP_USER_AUTH_API_BASE_ENDPOINT}/signin`)
-                fetch(`api/v1/signin`, {
+                fetch(`http://auth.mixedmachine.ml/api/v1/signin`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
