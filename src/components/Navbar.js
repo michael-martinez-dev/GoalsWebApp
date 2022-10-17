@@ -14,7 +14,7 @@ const Navbar = () => {
                     onClick={handleLogout}>
                 Sign Out
             </button>
-            <h1>Welcome to {process.env.REACT_APP_NAME}</h1>
+            <h1>Welcome </h1>
 
         </div>
     );
