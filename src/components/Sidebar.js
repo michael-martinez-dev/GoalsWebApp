@@ -3,8 +3,22 @@ import "./style/Sidebar.css";
 import {Navigation} from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 
+import NewGoal from './NewGoal';
+import GoalsView from './GoalsView';
+
 const Home = () => {
     const [page, setPage] = React.useState('home');
+
+    const handlePageChange = (page) => {
+        if (page === '/goals/view') {
+            return <GoalsView />;
+        } else if (page === '/goals/new') {
+            return <NewGoal />;
+        } else {
+            return <div>Nothing to show...</div>;
+        }
+    };
+
     return (
         <>
             <div className="sidebar">
@@ -12,7 +26,7 @@ const Home = () => {
                     // you can use your own router's api to get pathname
                     activeItemId="/management/members"
                     onSelect={({itemId}) => {
-                        setPage(itemId.split('/').reverse().join(' ').toUpperCase());
+                        setPage(itemId);
                     }}
                     items={[
                     {
@@ -51,7 +65,7 @@ const Home = () => {
                 />
             </div>
             <div className="content">
-                <h1>{page}</h1>
+                {handlePageChange(page)}
             </div>
         </>
     );
