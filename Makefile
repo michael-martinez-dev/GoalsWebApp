@@ -57,7 +57,7 @@ compose: image
 
 prod:
 	docker compose -f ./builder/docker-compose.prod.yml down
-	docker pull $(DOCKERHUB_USER)/$(APP_NAME):$(APP_VERSION)
+	docker pull $(DOCKERHUB_USER)/$(APP_NAME):$(APP_VERSION) --rebase --autostash
 	docker compose -f ./builder/docker-compose.prod.yml up -d
 
 clean:
