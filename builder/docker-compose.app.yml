@@ -8,4 +8,10 @@ services:
       - "80:80"
     env_file:
       - ../.env
+    networks:
+      - dev
 
+networks:
+  dev:
+    name: dev
+    external: true
