@@ -56,9 +56,9 @@ compose: image
 	docker compose -f ./builder/docker-compose.app.yml up -d
 
 prod:
-    docker compose -f ./builder/docker-compose.prod.yml down
-    docker pull $(DOCKERHUB_USER)/$(APP_NAME):$(APP_VERSION)
-    docker compose -f ./builder/docker-compose.prod.yml up -d
+	docker compose -f ./builder/docker-compose.prod.yml down
+	docker pull $(DOCKERHUB_USER)/$(APP_NAME):$(APP_VERSION)
+	docker compose -f ./builder/docker-compose.prod.yml up -d
 
 clean:
 	rm -fr ./build
