@@ -15,7 +15,7 @@ const Home = () => {
         } else if (page === '/goals/new') {
             return <NewGoal />;
         } else {
-            return <div>Nothing to show...</div>;
+            return <div>Not Implemented Yet...</div>;
         }
     };
 

@@ -1,11 +1,19 @@
 import React from "react";
+import Goal from "./Goal";
+import GoalsList from "./GoalsList";
 
 const GoalsView = () => {
-    return (
+    const [currentGoal, setCurrentGoal] = React.useState(null);
+
+    if (currentGoal === null) {
+        return <GoalsList setCurrentGoal={setCurrentGoal}/>;
+    } else {
+        return (
         <div>
-            <h1>Goals</h1>
+            <Goal goal={currentGoal} setGoal={setCurrentGoal}/>
         </div>
-    );
+        );
+    }
 };
 
 export default GoalsView;
