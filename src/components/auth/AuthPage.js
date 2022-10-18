@@ -1,5 +1,5 @@
 import React from 'react';
-import "./style/AuthPage.css";
+import "../style/AuthPage.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';

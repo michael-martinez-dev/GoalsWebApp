@@ -3,8 +3,8 @@ import "./style/Sidebar.css";
 import {Navigation} from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 
-import NewGoal from './NewGoal';
-import GoalsView from './GoalsView';
+import NewGoal from './goals/NewGoal';
+import GoalsView from './goals/GoalsView';
 
 const Home = () => {
     const [page, setPage] = React.useState('home');
