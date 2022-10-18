@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 
-import AuthPage from './components/AuthPage';
+import AuthPage from './components/auth/AuthPage';
 import Sidebar from './components/Sidebar';
 
 function App() {

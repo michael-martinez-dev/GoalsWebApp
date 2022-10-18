@@ -1,5 +1,5 @@
 import React from "react";
-import "./style/AuthPage.css";
+import "../style/AuthPage.css";
 import PropTypes from 'prop-types';
 
 const SignIn = ({setToken}) => {
