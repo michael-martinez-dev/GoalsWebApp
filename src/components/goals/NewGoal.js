@@ -10,13 +10,19 @@ const NewGoal = () => {
     const addGoalToBackend = () => {
         console.log("Adding goal to backend...");
         try {
+            const newGoalsBody = {
+                user_id:   localStorage.getItem("userId"),
+                title:     title,
+                content:   description, 
+                completed: completed
+            }
             fetch(`https://goals.mixedmachine.ml/api/v1/goals`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `${localStorage.getItem('token')}`
                 },
-                body: `{"user_id": "${localStorage.getItem("userId")}", "title":"${title}", "content": "${description}", "completed": "${completed}"}`
+                body: newGoalsBody
             })
             .then(res => res.json())
             .then(data => {
