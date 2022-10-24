@@ -2,7 +2,7 @@ import React from "react";
 import "../style/AuthPage.css";
 import PropTypes from 'prop-types';
 
-const SignIn = ({setToken}) => {
+const SignIn = ({setToken, setUserId}) => {
     const [error, setError] = React.useState("");
 
     function handleSignIn(e) {
@@ -29,7 +29,12 @@ const SignIn = ({setToken}) => {
                 .then(res => res.json())
                 .then(data => {
                     console.debug(data);
-                    setToken(data.token);
+                    if (data.token !== undefined) {
+                        setToken(data.token);
+                    }
+                    if (data.userId !== undefined) {
+                        setUserId(data.userId);
+                    }
                 })
                 .catch(err => {
                     console.debug(err);

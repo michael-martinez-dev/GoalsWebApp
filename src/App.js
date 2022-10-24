@@ -9,12 +9,19 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
 
   if (token === null || token === undefined || token === "") {
-    return <AuthPage setToken={
+    return <AuthPage 
+    setToken={
       (e) => {
         setToken(e);
         localStorage.setItem('token', e);
       }
-    } />;
+    }
+    setUserId={
+      (e) => {
+        localStorage.setItem('userId', e);
+      }
+    }
+    />;
   }
 
   return (
