@@ -5,7 +5,7 @@ import SignUp from "./SignUp";
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import PropTypes from 'prop-types';
 
-const AuthPage = ({setToken}) => {
+const AuthPage = ({setToken, setUserId}) => {
 
     return (
         <div className="auth-page">
@@ -16,7 +16,7 @@ const AuthPage = ({setToken}) => {
                 </TabList>
 
                 <TabPanel>
-                    <SignIn setToken={setToken} />
+                    <SignIn setToken={setToken} setUserId={setUserId} />
                 </TabPanel>
                 <TabPanel>
                     <SignUp/>
@@ -27,7 +27,8 @@ const AuthPage = ({setToken}) => {
 }
 
 AuthPage.propTypes = {
-    setToken: PropTypes.func.isRequired
+    setToken: PropTypes.func.isRequired,
+    setUserId: PropTypes.func.isRequired
 }
 
 export default AuthPage;
