@@ -8,12 +8,13 @@ const NewGoal = () => {
     const [completed, setCompleted] = React.useState("");
 
     const addGoalToBackend = () => {
-        console.log("Added goal to backend...");
+        console.log("Adding goal to backend...");
         try {
             fetch(`https://goals.mixedmachine.ml/api/v1/goals`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `${localStorage.getItem('token')}`
                 },
                 body: `{"user_id": "${localStorage.getItem("userId")}", "title":"${title}", "content": "${description}", "completed": "${completed}"}`
             })
@@ -28,6 +29,11 @@ const NewGoal = () => {
             );
         } catch (error) {
             console.log(error);
+        } finally {
+            setTitle("");
+            setDescription("");
+            setCompleted("");
+            console.debug("Goal added");
         }
     };
 
