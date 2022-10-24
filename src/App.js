@@ -7,14 +7,23 @@ import Sidebar from './components/Sidebar';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const [userId, setUserId] = useState(localStorage.getItem('userId'));
 
   if (token === null || token === undefined || token === "") {
-    return <AuthPage setToken={
+    return <AuthPage 
+    setToken={
       (e) => {
         setToken(e);
         localStorage.setItem('token', e);
       }
-    } />;
+    }
+    setUserId={
+      (e) => {
+        setUserId(e);
+        localStorage.setItem('userId', e);
+      }
+    }
+    />;
   }
 
   return (
