@@ -5,16 +5,12 @@ import '../style/NewGoal.css';
 const NewGoal = () => {
     const [title, setTitle] = React.useState("");
     const [description, setDescription] = React.useState("");
-    const [completed, setCompleted] = React.useState("");
 
     const addGoalToBackend = () => {
         console.log("Adding goal to backend...");
         try {
             const newGoalsBody = {
-                user_id:   localStorage.getItem("userId"),
-                title:     title,
-                content:   description, 
-                completed: completed
+                content:   description
             }
             fetch(`https://goals.mixedmachine.ml/api/v1/goals`, {
                 method: "POST",
